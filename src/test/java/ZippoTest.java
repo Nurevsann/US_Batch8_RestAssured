@@ -1,3 +1,4 @@
+import POJOClasses.Location;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -378,19 +379,30 @@ public class ZippoTest {
     // POJO (Plain Old Java Object)
     @Test
     void extractJsonPOJO(){
-        given()
+       Location location = given()
                 .pathParam("ZipCode",90210)
                 .when()
                 .get("http://api.zippopotam.us/us/{ZipCode}")
                 .then()
-                .log().body();
+                .log().body()
+                .extract().as(Location.class); // This request extracts the entire response and assigns it to Location class as a Location object
+        // We cannot extract the body partially (e.g. cannot extract place object separately)
+
+        System.out.println("location.getPostCode() = " + location.getPostCode());
+        System.out.println("location.getCountry() = " + location.getCountry());
+        System.out.println("location.getCountryAbbreviation() = " + location.getCountryAbbreviation());
+        System.out.println("location.getPlaces().get(0).getPlaceName() = " + location.getPlaces().get(0).getPlaceName());
+        System.out.println("location.getPlaces().get(0).getLongitude() = " + location.getPlaces().get(0).getLongitude());
+        System.out.println("location.getPlaces().get(0).getState() = " + location.getPlaces().get(0).getState());
+        System.out.println("location.getPlaces().get(0).getStateAbbreviation() = " + location.getPlaces().get(0).getStateAbbreviation());
+        System.out.println("location.getPlaces().get(0).getLatitude() = " + location.getPlaces().get(0).getLatitude());
 
         // public class Location{                   public class Place{
-        // String post code;                            String place name;
-        // String country;                              String longitude;
-        // String country abbreviation;                 String state;
-        // List<Place> places;                          String state abbreviation;
-        //                                              String latitude;
+        //      String post code;                            String place name;
+        //      String country;                              String longitude;
+        //      String country abbreviation;                 String state;
+        //      List<Place> places;                          String state abbreviation;
+        //                                                   String latitude;
         // }                                           }
 
 
