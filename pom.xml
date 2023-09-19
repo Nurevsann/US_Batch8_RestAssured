@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>3</maven.compiler.source>
-        <maven.compiler.target>3</maven.compiler.target>
+        <maven.compiler.source>3.9.4</maven.compiler.source>
+        <maven.compiler.target>3.9.4</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
