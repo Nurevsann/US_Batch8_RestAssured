@@ -36,6 +36,7 @@ public class APIKey {
                 .when()
                 .get("http://api.weatherapi.com/v1/current.json")
                 .then()
+                .statusCode(405)
                 //.log().body()
                 .extract().response();
 
