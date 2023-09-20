@@ -3,15 +3,19 @@ package CampusAPI.CountryAPI;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class CountryAPITest {
-
-   /*  Country countryRequest;
-    Country countryResponse;
-
     @Test
-   void loginTest(){
+    void Login(){
+        Map<String,String> credentials = new HashMap<>();
+        credentials.put("username","turkeyts");
+        credentials.put("password","Technostudy123");
+        credentials.put("rememberMe","true");
         given()
                 .body(credentials)
                 .contentType(ContentType.JSON)
@@ -21,35 +25,8 @@ public class CountryAPITest {
                 .log().body();
     }
 
-    @Test()
-    void createCountry() {
-
-        //countryRequest = new Country();
-        //countryRequest.setName(randomCountryName());
-        //countryRequest.setCode(randomCountryCode());
-        //countryRequest.setHasState(false);
-
-        countryResponse = given()
-                //.body(countryRequest)
-               // .cookies(cookies)
-               // .contentType(ContentType.JSON)
-                .when()
-                .post("")
-                .then()
-                .statusCode(201)
-                .log().body()
-                .extract().jsonPath().getObject("", Country.class);
-    }
 
 
-    @Test(dependsOnMethods = "createCountry")
-    void deleteCountry(){
-        given()
-                .pathParam("countryId", countryResponse.getId())
-               // .cookies(cookies)
-                .when()
-                .delete("/{countryId}")
-                .then()
-                .statusCode(200);
-    }*/
+
+
 }
